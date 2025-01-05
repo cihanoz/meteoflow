@@ -6,7 +6,7 @@
 
   let isLoading = true;
 
-  $: if ($settings.darkMode != undefined && $settings.darkMode != null && browser) {
+  $: if ($settings.darkMode != undefined && browser) {
     document.documentElement.classList.toggle('dark', $settings.darkMode);
     isLoading = false;
   }

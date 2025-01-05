@@ -3,13 +3,13 @@ import { writable } from 'svelte/store';
 export interface Settings {
   units: 'metric' | 'imperial';
   language: string;
-  darkMode: boolean | null;
+  darkMode: boolean;
 }
 
 const DEFAULT_SETTINGS: Settings = {
   units: 'metric',
   language: 'en',
-  darkMode: null,
+  darkMode: false,
 };
 
 function createSettingsStore() {
