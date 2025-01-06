@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const vi: Translations = {
     settings: {
         title: 'Cài đặt',
+        cities: {
+            label: 'Thành phố',
+        },
+        currentCity: {
+            label: 'Thành phố hiện tại',
+        },
         units: {
             label: 'Đơn vị',
             metric: 'Hệ mét (°C)',

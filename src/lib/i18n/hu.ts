@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const hu: Translations = {
     settings: {
         title: 'Beállítások',
+        cities: {
+            label: 'Városok',
+        },
+        currentCity: {
+            label: 'Jelenlegi város',
+        },
         units: {
             label: 'Mértékegységek',
             metric: 'Metrikus (°C)',

@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const nl: Translations = {
     settings: {
         title: 'Instellingen',
+        cities: {
+            label: 'Steden',
+        },
+        currentCity: {
+            label: 'Huidige stad',
+        },
         units: {
             label: 'Eenheden',
             metric: 'Metrisch (°C)',

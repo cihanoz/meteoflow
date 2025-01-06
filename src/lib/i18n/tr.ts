@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const tr: Translations = {
     settings: {
         title: 'Ayarlar',
+        cities: {
+            label: 'Şehirler',
+        },
+        currentCity: {
+            label: 'Mevcut şehir',
+        },
         units: {
             label: 'Birimler',
             metric: 'Metrik (°C)',

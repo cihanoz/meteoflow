@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const bn: Translations = {
     settings: {
         title: 'সেটিংস',
+        cities: {
+            label: 'শহরগুলি',
+        },
+        currentCity: {
+            label: 'বর্তমান শহর',
+        },
         units: {
             label: 'একক',
             metric: 'মেট্রিক (°C)',

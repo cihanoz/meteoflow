@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const ar: Translations = {
     settings: {
         title: 'الإعدادات',
+        cities: {
+            label: 'المدن',
+        },
+        currentCity: {
+            label: 'المدينة الحالية',
+        },
         units: {
             label: 'الوحدات',
             metric: 'متري (°C)',

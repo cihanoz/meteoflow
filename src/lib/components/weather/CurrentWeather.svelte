@@ -4,8 +4,9 @@
 	import { locale } from '$lib/i18n';
 	import { settings } from '$lib/stores/settings';
 	import LottiePlayer from '../ui/LottiePlayer.svelte';
+	import type { CitySearchResult } from '$lib/services/weather';
 
-	export let city: City;
+	export let currentCity: CitySearchResult;
 	export let weather: CurrentWeather | undefined;
 </script>
 
@@ -13,14 +14,14 @@
 	<div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg flex justify-center items-center">
 		<div class="flex justify-between items-start">
 			<div class="flex flex-col items-center">
-				<h2 class="text-2xl font-bold">{city.name}</h2>
-				<p class="text-gray-500 dark:text-gray-400">{city.country}</p>
+				<h2 class="text-2xl font-bold">{currentCity.name}</h2>
+				<p class="text-gray-500 dark:text-gray-400">{currentCity.country}</p>
 				<LottiePlayer fileName={weather.condition} />
 				<p class="text-4xl font-bold mt-4">
 					{formatTemperature(weather, $locale, $settings.units)}
 				</p>
 				<p class="text-gray-600 dark:text-gray-300 mt-2">
-					{weather.condition}
+					{weather.condition.toUpperCase()}
 				</p>
 			</div>
 		</div>

@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const fi: Translations = {
     settings: {
         title: 'Asetukset',
+        cities: {
+            label: 'Kaupungit',
+        },
+        currentCity: {
+            label: 'Nykyinen kaupunki',
+        },
         units: {
             label: 'Yksiköt',
             metric: 'Metrinen (°C)',

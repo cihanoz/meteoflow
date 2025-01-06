@@ -10,12 +10,7 @@
     import { isLoading } from '$lib/stores/loading';
 	import { browser } from '$app/environment';
     import { t } from '$lib/i18n';
-    
-    let currentCity: City = {
-        id: '1',
-        name: 'London',
-        country: 'UK'
-    };
+	import { settings } from '$lib/stores/settings';
 
     let currentWeather: CurrentWeather;
     let forecast: DayForecast[] = [];
@@ -30,7 +25,7 @@
         try {
             isLoading.set(true);  // Set loading at start of fetch
             console.log('Fetching weather data...');
-            const { current, forecast: forecastData } = await WeatherService.getWeatherData(currentCity);
+            const { current, forecast: forecastData } = await WeatherService.getWeatherData($settings.currentCity);
             console.log('Weather data received:', current);
             currentWeather = current;
             forecast = forecastData;
@@ -68,7 +63,7 @@
             {/if}
 
             <CurrentWeatherCard 
-                city={currentCity}
+                currentCity={$settings.currentCity}
                 weather={currentWeather}
             />
 

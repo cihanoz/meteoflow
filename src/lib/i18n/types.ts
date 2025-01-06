@@ -1,6 +1,12 @@
 export interface Translations {
     settings: {
         title: string;
+        cities: {
+            label: string;
+        };
+        currentCity: {
+            label: string;
+        };
         units: {
             label: string;
             metric: string;

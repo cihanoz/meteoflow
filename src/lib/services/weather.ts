@@ -12,6 +12,16 @@ interface WeatherCache {
     forecast: DayForecast[];
 }
 
+export interface CitySearchResult {
+    id: number;
+    name: string;
+    region: string;
+    country: string;
+    lat: number;
+    lon: number;
+    url: string;
+}
+
 export class WeatherService {
     private static async fetchFromAPI(endpoint: string): Promise<any> {
         try {
@@ -35,11 +45,12 @@ export class WeatherService {
         }
     }
 
-    static async getWeatherData(city: City): Promise<{ current: CurrentWeather; forecast: DayForecast[] }> {
-        console.log('Getting weather data for:', city.name);
+    static async getWeatherData(currentCity: CitySearchResult): Promise<{ current: CurrentWeather; forecast: DayForecast[] }> {
+        console.log('Getting weather data for:', currentCity.name);
         
+        const cityKey =  currentCity.name.split(' ').join('_');
         // Check local storage first
-        const cachedData = localStorage.getItem(`weather_${city.name}`);
+        const cachedData = localStorage.getItem(`weather_${cityKey}`);
         if (cachedData) {
             console.log('Found cached data');
             const parsed: WeatherCache = JSON.parse(cachedData);
@@ -61,7 +72,7 @@ export class WeatherService {
         // Fetch fresh data
         console.log('Fetching fresh data from API');
         const data = await this.fetchFromAPI(
-            `/forecast.json?q=${encodeURIComponent(city.name)}&days=3&aqi=no`
+            `/forecast.json?q=${encodeURIComponent(currentCity.name)}&days=3&aqi=no`
         );
         console.log('API response:', data);
 
@@ -89,8 +100,24 @@ export class WeatherService {
             current,
             forecast
         };
-        localStorage.setItem(`weather_${city.name}`, JSON.stringify(cacheData));
+        localStorage.setItem(`weather_${cityKey}`, JSON.stringify(cacheData));
 
         return { current, forecast };
+    }
+
+    static async searchCities(query: string): Promise<CitySearchResult[]> {
+        if (!query.trim()) {
+            return [];
+        }
+
+        try {
+            const data = await this.fetchFromAPI(
+                `/search.json?q=${encodeURIComponent(query)}`
+            );
+            return data as CitySearchResult[];
+        } catch (error) {
+            console.error('Error searching cities:', error);
+            return [];
+        }
     }
 } 

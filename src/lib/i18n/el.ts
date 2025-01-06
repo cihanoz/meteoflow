@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const el: Translations = {
     settings: {
         title: 'Ρυθμίσεις',
+        cities: {
+            label: 'Πόλεις',
+        },
+        currentCity: {
+            label: 'Τρέχουσα πόλη',
+        },
         units: {
             label: 'Μονάδες',
             metric: 'Μετρικό (°C)',

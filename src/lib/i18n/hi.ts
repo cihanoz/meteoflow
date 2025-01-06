@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const hi: Translations = {
     settings: {
         title: 'सेटिंग्स',
+        cities: {
+            label: 'शहर',
+        },
+        currentCity: {
+            label: 'वर्तमान शहर',
+        },
         units: {
             label: 'इकाइयाँ',
             metric: 'मेट्रिक (°C)',

@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const uk: Translations = {
     settings: {
         title: 'Налаштування',
+        cities: {
+            label: 'Міста',
+        },
+        currentCity: {
+            label: 'Поточне місто',
+        },
         units: {
             label: 'Одиниці виміру',
             metric: 'Метричні (°C)',

@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const zh_tw: Translations = {
     settings: {
         title: '設定',
+        cities: {
+            label: '城市',
+        },
+        currentCity: {
+            label: '目前城市',
+        },
         units: {
             label: '單位',
             metric: '公制 (°C)',

@@ -1,15 +1,26 @@
+import type { CitySearchResult } from '$lib/services/weather';
 import { writable } from 'svelte/store';
 
 export interface Settings {
   units: 'metric' | 'imperial';
   language: string;
   darkMode: boolean;
+  currentCity: CitySearchResult;
 }
 
 const DEFAULT_SETTINGS: Settings = {
   units: 'metric',
   language: 'en',
   darkMode: false,
+  currentCity: {
+    country: "United Kingdom",
+    id: 2801268,
+    lat: 51.52,
+    lon: -0.11,
+    name: "London",
+    region: "City of London, Greater London",
+    url: "london-city-of-london-greater-london-united-kingdom",
+  },
 };
 
 function createSettingsStore() {
@@ -43,6 +54,13 @@ function createSettingsStore() {
     setDarkMode: (darkMode: boolean) => {
       update(settings => {
         const newSettings = { ...settings, darkMode };
+        localStorage.setItem('settings', JSON.stringify(newSettings));
+        return newSettings;
+      });
+    },
+    setCurrentCity: (city: CitySearchResult) => {
+      update(settings => {
+        const newSettings = { ...settings, currentCity: city };
         localStorage.setItem('settings', JSON.stringify(newSettings));
         return newSettings;
       });

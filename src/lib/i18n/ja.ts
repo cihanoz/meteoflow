@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const ja: Translations = {
     settings: {
         title: '設定',
+        cities: {
+            label: '都市',
+        },
+        currentCity: {
+            label: '現在の都市',
+        },
         units: {
             label: '単位',
             metric: 'メートル法 (°C)',

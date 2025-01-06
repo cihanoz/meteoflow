@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const fr: Translations = {
     settings: {
         title: 'Paramètres',
+        cities: {
+            label: 'Villes',
+        },
+        currentCity: {
+            label: 'Ville actuelle',
+        },
         units: {
             label: 'Unités',
             metric: 'Métrique (°C)',

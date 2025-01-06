@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const bg: Translations = {
     settings: {
         title: 'Настройки',
+        cities: {
+            label: 'Градове',
+        },
+        currentCity: {
+            label: 'Текущ град',
+        },
         units: {
             label: 'Мерни единици',
             metric: 'Метрични (°C)',

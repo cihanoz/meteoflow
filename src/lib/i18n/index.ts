@@ -23,6 +23,10 @@ import tr from './tr';
 import uk from './uk';
 import vi from './vi';
 import zh_tw from './zh_tw';
+import sr from './sr';
+import sk from './sk';
+import ro from './ro';
+import sv from './sv';
 
 export const translations: Record<string, Translations> = {
     en,
@@ -48,6 +52,10 @@ export const translations: Record<string, Translations> = {
     uk,
     vi,
     zh_tw,
+    sr,
+    sk,
+    ro,
+    sv
 };
 
 export const locale = writable('en');

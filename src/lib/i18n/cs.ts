@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const cs: Translations = {
     settings: {
         title: 'Nastavení',
+        cities: {
+            label: 'Města',
+        },
+        currentCity: {
+            label: 'Aktuální město',
+        },
         units: {
             label: 'Jednotky',
             metric: 'Metrické (°C)',

@@ -3,6 +3,12 @@ import type { Translations } from './types';
 const ko: Translations = {
     settings: {
         title: '설정',
+        cities: {
+            label: '도시',
+        },
+        currentCity: {
+            label: '현재 도시',
+        },
         units: {
             label: '단위',
             metric: '미터법 (°C)',
