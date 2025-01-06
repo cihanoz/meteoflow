@@ -16,7 +16,7 @@
 
     const currentWeather: CurrentWeather = {
         temperature: 18,
-        condition: WeatherCondition.CLOUDS,
+        condition: WeatherCondition.CLEAR,
         lastUpdated: new Date()
     };
 
@@ -25,13 +25,13 @@
             date: new Date(),
             dayTemp: 20,
             nightTemp: 12,
-            condition: WeatherCondition.CLEAR
+            condition: WeatherCondition.THUNDERRAIN
         },
         {
             date: new Date(Date.now() + 86400000),
             dayTemp: 22,
             nightTemp: 14,
-            condition: WeatherCondition.CLOUDS
+            condition: WeatherCondition.CLOUDY
         },
         {
             date: new Date(Date.now() + 172800000),

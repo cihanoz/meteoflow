@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { WeatherCondition } from '$lib/types/weather';
+	import LottiePlayer from '../ui/LottiePlayer.svelte';
 
     export let condition: WeatherCondition;
     export let small = false;
@@ -7,7 +8,7 @@
 
 <div class="weather-icon" class:small>
     <!-- Placeholder for weather icon/animation -->
-    {condition}
+    <LottiePlayer fileName={condition} />
 </div>
 
 <style>

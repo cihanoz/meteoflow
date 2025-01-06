@@ -1,9 +1,12 @@
 export enum WeatherCondition {
     CLEAR = 'clear',
-    CLOUDS = 'clouds',
+    CLOUDY = 'cloudy',
+    FOG = 'fog',
+    PARTLYCLOUDY = 'partly-cloudy',
     RAIN = 'rain',
     SNOW = 'snow',
-    THUNDERSTORM = 'thunderstorm',
+    THUNDERRAIN = 'thunder-rain',
+    THUNDER = 'thunder',
     DRIZZLE = 'drizzle',
     MIST = 'mist'
 }
