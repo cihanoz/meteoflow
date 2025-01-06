@@ -15,7 +15,7 @@
     });
 </script>
 
-<div class="p-4 rounded-lg bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm flex flex-col items-center gap-2">
+<div class="p-4 rounded-lg bg-white/10 dark:bg-gray-300/10 backdrop-blur-sm flex flex-col items-center gap-2 shadow-lg">
     <div class="text-sm opacity-90">{formattedDate}</div>
     <WeatherAnimation condition={day.condition} small />
     <div class="flex gap-4">

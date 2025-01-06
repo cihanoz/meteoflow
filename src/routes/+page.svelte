@@ -9,6 +9,7 @@
     import { goto } from '$app/navigation';
     import { isLoading } from '$lib/stores/loading';
 	import { browser } from '$app/environment';
+    import { t } from '$lib/i18n';
     
     let currentCity: City = {
         id: '1',
@@ -34,7 +35,7 @@
             currentWeather = current;
             forecast = forecastData;
         } catch (err) {
-            error = err instanceof Error ? err.message : 'Failed to load weather data';
+            error = err instanceof Error ? err.message : $t.weather.error;
             console.error('Error:', error);
         } finally {
             isLoading.set(false);

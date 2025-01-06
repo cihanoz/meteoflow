@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
 
   export let fileName: string;
+  console.log(fileName);
   let container: HTMLElement;
 
 onMount(() => {
