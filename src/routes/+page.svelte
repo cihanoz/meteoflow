@@ -1,48 +1,45 @@
 <script lang="ts">
-    import { WeatherCondition } from '$lib/types/weather';
+    import { onMount } from 'svelte';
+    import { WeatherService } from '$lib/services/weather';
     import type { CurrentWeather, DayForecast, City } from '$lib/types/weather';
     import CurrentWeatherCard from '$lib/components/weather/CurrentWeather.svelte';
     import ForecastList from '$lib/components/forecast/ForecastList.svelte';
     import StatusIndicator from '$lib/components/ui/StatusIndicator.svelte';
     import { Settings } from 'lucide-svelte';
     import { goto } from '$app/navigation';
+    import { isLoading } from '$lib/stores/loading';
+	import { browser } from '$app/environment';
     
-    // Dummy data
-    const currentCity: City = {
+    let currentCity: City = {
         id: '1',
         name: 'London',
         country: 'UK'
     };
 
-    const currentWeather: CurrentWeather = {
-        temperature: 18,
-        condition: WeatherCondition.CLEAR,
-        lastUpdated: new Date()
-    };
+    let currentWeather: CurrentWeather;
+    let forecast: DayForecast[] = [];
+    let isOffline = browser && !navigator.onLine;
+    let error: string | null = null;
 
-    const forecast: DayForecast[] = [
-        {
-            date: new Date(),
-            dayTemp: 20,
-            nightTemp: 12,
-            condition: WeatherCondition.THUNDERRAIN
-        },
-        {
-            date: new Date(Date.now() + 86400000),
-            dayTemp: 22,
-            nightTemp: 14,
-            condition: WeatherCondition.CLOUDY
-        },
-        {
-            date: new Date(Date.now() + 172800000),
-            dayTemp: 19,
-            nightTemp: 11,
-            condition: WeatherCondition.RAIN
+    onMount(async () => {
+        // Listen for online/offline events
+        window.addEventListener('online', () => isOffline = false);
+        window.addEventListener('offline', () => isOffline = true);
+
+        try {
+            isLoading.set(true);  // Set loading at start of fetch
+            console.log('Fetching weather data...');
+            const { current, forecast: forecastData } = await WeatherService.getWeatherData(currentCity);
+            console.log('Weather data received:', current);
+            currentWeather = current;
+            forecast = forecastData;
+        } catch (err) {
+            error = err instanceof Error ? err.message : 'Failed to load weather data';
+            console.error('Error:', error);
+        } finally {
+            isLoading.set(false);
         }
-    ];
-
-    const isOffline = false;
-    const isLoading = false;
+    });
 
     function goToSettings() {
         goto('/settings');
@@ -63,13 +60,18 @@
         </header>
 
         <main class="flex flex-col gap-8">
+            {#if error}
+                <div class="p-4 bg-red-100 dark:bg-red-900 rounded-lg text-red-700 dark:text-red-100">
+                    {error}
+                </div>
+            {/if}
+
             <CurrentWeatherCard 
                 city={currentCity}
                 weather={currentWeather}
-                {isLoading}
             />
 
-            <ForecastList forecast={forecast} />
+            <ForecastList {forecast} />
         </main>
     </div>
 </div>

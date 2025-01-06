@@ -18,7 +18,8 @@ export interface City {
 }
 
 export interface CurrentWeather {
-    temperature: number;
+    temperature_c: number;
+    temperature_f: number;
     condition: WeatherCondition;
     lastUpdated: Date;
 }

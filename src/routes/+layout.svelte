@@ -3,19 +3,16 @@
   import LoadingScreen from '$lib/components/ui/LoadingScreen.svelte';
   import { settings } from "$lib/stores/settings";
 	import { browser } from "$app/environment";
+	import { isLoading } from "$lib/stores/loading";
 
-  let isLoading = true;
-
-  $: if ($settings.darkMode != undefined && browser) {
-    document.documentElement.classList.toggle('dark', $settings.darkMode);
-    isLoading = false;
-  }
+    $: if ($settings.darkMode != undefined && browser) {
+        document.documentElement.classList.toggle('dark', $settings.darkMode);
+    }
 </script>
 
-{#if isLoading}
-  <LoadingScreen />
-{:else}
-  <div class="transition-colors duration-200">
+<div class="transition-colors duration-200">
+    {#if $isLoading}
+        <LoadingScreen />
+    {/if}
     <slot />
-  </div>
-{/if}
+</div>
