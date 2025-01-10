@@ -1,9 +1,9 @@
-import type { City, CurrentWeather, DayForecast, WeatherError } from '$lib/types/weather';
+import type { CurrentWeather, DayForecast, WeatherError } from '$lib/types/weather';
 import { WeatherCondition } from '$lib/types/weather';
 import weatherConditionMap from '$lib/mapping/weatherApi';
-import { PUBLIC_WEATHER_API_KEY } from '$env/static/public';
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
+import { PRIVATE_WEATHER_API_KEY } from "$env/static/private";
 
-const API_BASE_URL = 'https://api.weatherapi.com/v1';
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 interface WeatherCache {
@@ -26,7 +26,7 @@ export class WeatherService {
     private static async fetchFromAPI(endpoint: string): Promise<any> {
         try {
             const response = await fetch(
-                `${API_BASE_URL}${endpoint}&key=${PUBLIC_WEATHER_API_KEY}`
+                `${PUBLIC_API_BASE_URL}${endpoint}&key=${PRIVATE_WEATHER_API_KEY}`
             );
             
             if (!response.ok) {
